@@ -15,8 +15,9 @@
 # See syslog-ng(8) and syslog-ng.conf(5) for more information.
 #
 
+@version: 3.2
 options {
-  sync (<%=@sync%>);
+  flush_lines (<%=@sync%>);
   time_reopen (<%=@time_reopen%>);
   log_fifo_size (<%=@log_fifo_size%>);
   long_hostnames (<%=@long_hostnames%>);

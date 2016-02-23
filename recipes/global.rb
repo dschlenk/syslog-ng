@@ -28,6 +28,7 @@ service "rsyslog" do
 end
 
 cookbook_file "#{node[:syslog_ng][:config_dir]}/conf.d/01global" do
+  cookbook node[:syslog_ng][:global_cookbook]
   owner node[:syslog_ng][:user]
   group node[:syslog_ng][:group]
   mode 00640

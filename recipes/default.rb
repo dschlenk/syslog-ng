@@ -18,14 +18,17 @@
 #
 
 package "syslog-ng"
+package "syslog-ng-libdbi"
 
 cookbook_file "#{node[:syslog_ng][:config_dir]}/syslog-ng.conf" do
+  cookbook node[:syslog_ng][:conf_file_cookbook]
   owner node[:syslog_ng][:user]
   group node[:syslog_ng][:group]
   mode 00640
 end
 
 cookbook_file "/etc/init.d/syslog-ng" do
+  cookbook node[:syslog_ng][:init_script_cookbook]
   owner node[:syslog_ng][:user]
   group node[:syslog_ng][:group]
   mode 00755
@@ -52,6 +55,7 @@ end
 
 template "#{node[:syslog_ng][:config_dir]}/conf.d/00base" do
   source "00base.erb"
+  cookbook node[:syslog_ng][:base_cookbook]
   owner node[:syslog_ng][:user]
   group node[:syslog_ng][:group]
   mode 00640

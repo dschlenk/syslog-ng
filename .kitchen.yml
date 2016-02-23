@@ -1,0 +1,26 @@
+---
+# This file is managed by the stacks toolchain. It may be overwritten by
+# updates to the template. Your customizations should be placed inside the
+# .kitchen.local.yml, which will not be overwritten by newer templates.
+# If you need to override the driver, do it in ~/.kitchen/config.yml or using
+# environment variables like VAGRANT_DEFAULT_PROVIDER.
+
+driver:
+  name: vagrant
+
+driver_config:
+  require_chef_omnibus: true
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: centos-6.7
+    run_list:
+    - recipe[yum-epel]
+
+suites:
+  - name: syslog_ng_all
+    run_list:
+      - recipe[syslog-ng::default]
+      - recipe[syslog-ng::global]
