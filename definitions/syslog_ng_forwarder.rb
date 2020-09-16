@@ -52,6 +52,6 @@ define :syslog_ng_forwarder, :template => "syslog_ng_forwarder.erb" do
       :params => params
     )
 
-    notifies :restart, resources(:service => "syslog-ng"), :immediately
+    notifies :restart, resources(:service => "syslog-ng"), :delayed
   end
 end
