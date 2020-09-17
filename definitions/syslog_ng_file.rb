@@ -67,7 +67,7 @@ define :syslog_ng_file, :template => "syslog_ng_file.erb" do
       :params => params
     )
 
-    notifies :restart, resources(:service => "syslog-ng"), :immediately
+    notifies :restart, resources(:service => "syslog-ng"), :delayed
   end
   
   template "/etc/cron.daily/#{application[:name]}_compress_logs" do

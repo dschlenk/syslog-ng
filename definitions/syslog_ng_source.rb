@@ -46,7 +46,7 @@ define :syslog_ng_source, :template => "syslog_ng_source.erb" do
       :params => params
     )
 
-    notifies :restart, resources(:service => "syslog-ng"), :immediately
+    notifies :restart, resources(:service => "syslog-ng"), :delayed
   end
   
 end
